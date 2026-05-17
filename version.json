@@ -1,0 +1,6 @@
+{
+  "version": "1.0.1",
+  "buildNumber": "2",
+  "apkUrl": "https://github.com/YojanCortes/MascotaJann/raw/main/app-release.apk",
+  "releaseNotes": "Se implemento el nuevo sistema de actualizaciones automáticas desde la app y se integro el boton en el menu lateral."
+}
