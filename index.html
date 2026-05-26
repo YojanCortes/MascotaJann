@@ -1,308 +1,71 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Best Practices -->
-    <title>Descargar App - MascotaJann</title>
-    <meta name="description" content="Descarga la última versión de la aplicación. Escanea el código QR o haz clic en el botón para comenzar la instalación.">
-    
-    <!-- Modern Typography & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #8b5cf6;
-            --primary-hover: #7c3aed;
-            --bg-dark: #0f172a;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-        }
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--bg-dark);
-            /* Animated gradient background */
-            background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81, #0f172a);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--text-light);
-            padding: 20px;
-            overflow-x: hidden;
-            position: relative;
-        }
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/MascotaJann/">
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 32px;
-            padding: 3rem 2.5rem;
-            text-align: center;
-            max-width: 420px;
-            width: 100%;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            z-index: 10;
-        }
-        
-        /* Subtle glow effect behind card */
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
 
-        .glass-card:hover {
-            transform: translateY(-8px);
-        }
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="appanimales">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-        .app-logo {
-            width: 110px;
-            height: 110px;
-            border-radius: 28px;
-            margin: 0 auto 1.5rem;
-            display: block;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            object-fit: cover;
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border: 2px solid rgba(255,255,255,0.1);
-        }
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #ffffff, #c4b5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
+  <title>appanimales</title>
+  <link rel="manifest" href="manifest.json">
 
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.5;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        .qr-wrapper {
-            background: #ffffff;
-            padding: 1.2rem;
-            border-radius: 24px;
-            display: inline-block;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-        
-        .qr-wrapper:hover {
-            transform: scale(1.05);
-        }
-
-        .qr-wrapper img {
-            display: block;
-            width: 180px;
-            height: 180px;
-            border-radius: 8px;
-        }
-        
-        .qr-hint {
-            position: absolute;
-            bottom: -30px;
-            left: 0;
-            right: 0;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            padding: 1.1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
-            width: 100%;
-        }
-
-        .download-btn:hover {
-            background: var(--primary-hover);
-            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.6);
-            transform: translateY(-2px);
-        }
-        
-        .download-btn i {
-            font-size: 1.3rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-4px); }
-            60% { transform: translateY(-2px); }
-        }
-        
-        /* Floating paws particles effect */
-        .particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .particle {
-            position: absolute;
-            pointer-events: none;
-            animation: float 12s infinite linear;
-        }
-        @keyframes float {
-            0% { 
-                transform: translateY(105vh) rotate(0deg); 
-                opacity: 1; 
-            }
-            100% { 
-                transform: translateY(-10vh) rotate(360deg); 
-                opacity: 0; 
-            }
-        }
-
-        /* 📱 Responsive Design Optimization */
-        @media (max-width: 480px) {
-            body {
-                padding: 12px;
-            }
-            .glass-card {
-                padding: 2rem 1.5rem;
-                border-radius: 24px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            p.subtitle {
-                font-size: 0.95rem;
-                margin-bottom: 1.8rem;
-            }
-            .qr-wrapper {
-                padding: 0.8rem;
-                margin-bottom: 2rem;
-            }
-            .qr-wrapper img {
-                width: 140px;
-                height: 140px;
-            }
-            .download-btn {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .glass-card {
-                padding: 1.5rem 1rem;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
-            .qr-wrapper img {
-                width: 120px;
-                height: 120px;
-            }
-        }
-    </style>
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "3180490255";
+  </script>
+  <!-- Google Maps SDK para desarrollo en Web -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSqqVvn-g_Rf4mGxEzxDzBRerc4_AFWus&loading=async"></script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+  <style>
+    /* Ocultar todos los botones por defecto de Google Maps en Web (Fullscreen, MapType, etc.) */
+    .gmnoprint {
+      display: none !important;
+    }
+    .gm-fullscreen-control {
+      display: none !important;
+    }
+  </style>
 </head>
 <body>
-    
-    <!-- Background particles for rich aesthetics -->
-    <div class="particles" id="particles"></div>
-
-    <main class="glass-card">
-        <!-- REEMPLAZA ESTA URL CON LA RUTA DE TU LOGO -->
-        <img src="logo_17.png" alt="Logo de la App" class="app-logo" id="appLogo">
-        
-        <h1 id="appTitle">MascotaJann</h1>
-        <p class="subtitle">Escanea el código QR desde tu celular para acceder a esta página y descargar la aplicación.</p>
-
-        <div class="qr-wrapper">
-            <img id="qr-code" src="" alt="Código QR para descargar la app">
-            <span class="qr-hint">Apunta la cámara aquí</span>
-        </div>
-
-        <!-- ESTE LINK SIEMPRE APUNTARÁ AL ÚLTIMO APK PUBLICADO AUTOMÁTICAMENTE EN TU WEB -->
-        <a href="app-release.apk" class="download-btn" id="downloadBtn">
-            <i class="fa-solid fa-cloud-arrow-down"></i>
-            Descargar APK
-        </a>
-    </main>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Genera el QR dinámicamente con la URL actual de la página.
-            // Si subes esto a GitHub Pages, el QR automáticamente apuntará a la página de GitHub Pages.
-            const qrImage = document.getElementById("qr-code");
-            const currentUrl = encodeURIComponent(window.location.href);
-            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${currentUrl}&color=0f172a&bgcolor=ffffff&margin=10`;
-
-            // Patitas de perros y gatos flotantes en el fondo
-            const particlesContainer = document.getElementById('particles');
-            for(let i = 0; i < 25; i++) {
-                let particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Icono de patita de FontAwesome
-                particle.innerHTML = '<i class="fa-solid fa-paw"></i>';
-                
-                let size = Math.random() * 22 + 10; // Tamaños variados entre 10px y 32px
-                particle.style.fontSize = `${size}px`;
-                
-                // Opacidad aleatoria para dar profundidad 3D
-                particle.style.color = `rgba(255, 255, 255, ${Math.random() * 0.12 + 0.04})`;
-                
-                particle.style.left = `${Math.random() * 100}vw`;
-                
-                // Velocidad y retrasos orgánicos
-                let duration = Math.random() * 8 + 10; // Entre 10 y 18 segundos
-                particle.style.animationDuration = `${duration}s`;
-                particle.style.animationDelay = `${Math.random() * 6}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        });
-    </script>
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
