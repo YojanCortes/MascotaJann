@@ -1,6 +1,6 @@
 {
-  "version": "1.0.4",
-  "buildNumber": "5",
+  "version": "1.0.5",
+  "buildNumber": "6",
   "apkUrl": "https://yojancortes.github.io/MascotaJann/app-release.apk",
-  "releaseNotes": "Buscador de usuarios universal, alertas de mascotas cercanas agrupadas sin spam y perfiles de mascotas mejorados."
+  "releaseNotes": "Efectos de audio de maullidos tiernos en notificaciones, animación premium lenta de lluvia de patitas flotantes en likes y doble tap (con sonido sincronizado), e hilos de comentarios con diseño inline compacto."
 }
